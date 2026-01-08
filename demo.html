@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NannyAI - مساعد ثاني الذكي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajwali:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajwali', sans-serif;
+            background: linear-gradient(135deg, #f9b5d0 0%, #ddbfff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff69b4, #9370db);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin: 20px 0 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #999;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .login-section {
+            margin: 30px 0;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-family: 'Tajwali', sans-serif;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #ff69b4;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff69b4, #9370db);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Tajwali', sans-serif;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            min-width: 100px;
+            background: #f0f0f0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #ff69b4, #9370db);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .content {
+            text-align: right;
+            line-height: 1.8;
+            color: #666;
+            margin: 20px 0;
+        }
+        
+        .feature-list {
+            text-align: right;
+            margin: 20px 0;
+        }
+        
+        .feature-list li {
+            list-style: none;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">👶</div>
+        <h1>مساعد ثاني الذكي</h1>
+        <p class="subtitle">تطبيق ذكي لمساعدة الأمهات على فهم بكاء الأطفال</p>
+        
+        <div id="loginSection" class="login-section">
+            <input type="password" id="password" placeholder="أدخل كلمة المرور" />
+            <button onclick="login()">دخول</button>
+            <p class="subtitle" style="margin-top: 15px;">كلمة المرور: nannyai2024</p>
+        </div>
+        
+        <div id="appSection" class="hidden">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('analysis')">📊 التحليل</button>
+                <button class="tab-btn" onclick="showTab('history')">📋 السجل</button>
+                <button class="tab-btn" onclick="showTab('tips')">💡 نصائح</button>
+                <button class="tab-btn" onclick="showTab('info')">ℹ️ معلومات</button>
+            </div>
+            
+            <div id="analysis" class="content">
+                <h3>تحليل بكاء الطفل</h3>
+                <p>استخدم الميكروفون لتسجيل صوت بكاء الطفل</p>
+                <button onclick="recordAudio()" style="margin-top: 15px;">🎤 بدء التسجيل</button>
+            </div>
+            
+            <div id="history" class="content hidden">
+                <h3>سجل التحليلات</h3>
+                <p>سيتم عرض سجل تحليلات الطفل هنا</p>
+                <ul class="feature-list">
+                    <li>✓ تحليل تاريخي شامل</li>
+                    <li>✓ إحصائيات يومية</li>
+                    <li>✓ رسوم بيانية توضيحية</li>
+                </ul>
+            </div>
+            
+            <div id="tips" class="content hidden">
+                <h3>نصائح مفيدة</h3>
+                <ul class="feature-list">
+                    <li>👶 اهتمي بالقرب الجسدي من طفلك</li>
+                    <li>🎵 استخدمي الأغاني الهادئة</li>
+                    <li>🌙 حافظي على روتين نومي منتظم</li>
+                    <li>🍼 تأكدي من تغذية الطفل الكافية</li>
+                    <li>💙 لا تترددي في استشارة الطبيب</li>
+                </ul>
+            </div>
+            
+            <div id="info" class="content hidden">
+                <h3>عن التطبيق</h3>
+                <p>تطبيق NannyAI مصمم خصيصاً لمساعدة الأمهات الجدد على فهم احتياجات أطفالهن من خلال تحليل أصوات البكاء.</p>
+                <p style="margin-top: 15px;">الإصدار: 1.0.0</p>
+                <button onclick="logout()" style="margin-top: 20px; background: #e74c3c;">تسجيل الخروج</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function login() {
+            const password = document.getElementById('password').value;
+            if (password === 'nannyai2024') {
+                document.getElementById('loginSection').classList.add('hidden');
+                document.getElementById('appSection').classList.remove('hidden');
+            } else {
+                alert('كلمة المرور غير صحيحة');
+            }
+        }
+        
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.remove('hidden');
+            event.target.classList.add('active');
+        }
+        
+        function recordAudio() {
+            alert('🎤 التسجيل: ميزة التسجيل والتحليل متوفرة في النسخة الكاملة');
+        }
+        
+        function logout() {
+            document.getElementById('appSection').classList.add('hidden');
+            document.getElementById('loginSection').classList.remove('hidden');
+            document.getElementById('password').value = '';
+        }
+    </script>
+</body>
+</html>
