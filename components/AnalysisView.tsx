@@ -100,3 +100,4 @@ const AnalysisView: React.FC<AnalysisViewProps> = ({ result }) => {
 };
 
 export default AnalysisView;
+//
