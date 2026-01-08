@@ -1,0 +1,7 @@
+{
+  "name": "NannyAI - Smart Baby Cry Assistant",
+  "description": "An intelligent assistant for new mothers that uses AI to analyze baby cries and provide expert parenting advice.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
